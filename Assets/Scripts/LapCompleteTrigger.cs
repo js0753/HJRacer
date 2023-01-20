@@ -15,35 +15,34 @@ public class LapCompleteTrigger : MonoBehaviour {
 	public int MinuteCountBest;
 	public int SecondCountBest;
 	public float MilliCountBest;
-
 	public string MilliDisplayBest;
-	public int MinuteCountStart;
-	public int SecondCountStart;
-	public float MilliCountStart;
+
 	public bool isBestTime;
 	void Start(){
 		MinuteCountBest= 9999;
 		SecondCountBest= 9999;
 		MilliCountBest= 9999;
-		MinuteCountStart=0;
-		SecondCountStart=0;
-		MilliCountStart = 0;
 		Debug.Log (MinuteCountBest);
 	}
 	void OnTriggerEnter(){
 		int LTMin = LapTimeManager.MinuteCount;
 		int LTSec = LapTimeManager.SecondCount;
 		float LTMs = LapTimeManager.MilliCount;
+
+		LapTimeManager.MinuteCount = 0;
+		LapTimeManager.SecondCount = 0;
+		LapTimeManager.MilliCount = 0;
+
 		isBestTime = false;
 		Debug.Log (LTMin);
 		Debug.Log (MinuteCountBest);
-		if (LTMin- MinuteCountStart < MinuteCountBest) {
+		if (LTMin < MinuteCountBest) {
 			isBestTime = true;
-		} else if (LTMin - MinuteCountStart == MinuteCountBest) {
-			if (LTSec - SecondCountStart < SecondCountBest) {
+		} else if (LTMin == MinuteCountBest) {
+			if (LTSec < SecondCountBest) {
 				isBestTime = true;
-			} else if (LTSec - SecondCountStart == SecondCountBest) { 
-				if (LTMs - MilliCountStart < MilliCountBest) {
+			} else if (LTSec == SecondCountBest) { 
+				if (LTMs  < MilliCountBest) {
 					isBestTime = true;
 				}
 			}
@@ -51,18 +50,11 @@ public class LapCompleteTrigger : MonoBehaviour {
 
 		Debug.Log (isBestTime);
 		if (isBestTime==true) {
-			MinuteCountBest = LTMin- MinuteCountStart;
-			SecondCountBest = LTSec- SecondCountStart;
-			MilliCountBest = LTMs - MilliCountStart;
+			MinuteCountBest = LTMin;
+			SecondCountBest = LTSec;
+			MilliCountBest = LTMs;
 		}
 
-
-		MilliCountBest += Time.deltaTime * 10;
-
-		if (MilliCountBest >= 10) {
-			MilliCountBest = 0;
-			SecondCountBest += 1;
-		}
 		MilliDisplayBest = MilliCountBest.ToString ("F0");
 		MilliBoxBest.GetComponent<Text> ().text = ""+MilliDisplayBest;
 		if (SecondCountBest <= 9) {
@@ -80,9 +72,7 @@ public class LapCompleteTrigger : MonoBehaviour {
 		} else {
 			MinuteBoxBest.GetComponent<Text> ().text = ""+ MinuteCountBest+":";
 		}
-		MinuteCountStart=LTMin;
-		SecondCountStart=LTSec;
-		MilliCountStart = LTMs;
+
 		LapCompleteTrig.SetActive (false);
 		HalfLapTrig.SetActive (true);
 	}
