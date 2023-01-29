@@ -11,11 +11,14 @@ public class LapCompleteTrigger : MonoBehaviour {
 	public GameObject MinuteBoxBest;
 	public GameObject SecondBoxBest;
 	public GameObject MilliBoxBest;
+	public GameObject LapCount;
+
 
 	public int MinuteCountBest;
 	public int SecondCountBest;
 	public float MilliCountBest;
 	public string MilliDisplayBest;
+	public int LapsDone;
 
 	public bool isBestTime;
 	void Start(){
@@ -25,9 +28,16 @@ public class LapCompleteTrigger : MonoBehaviour {
 		Debug.Log (MinuteCountBest);
 	}
 	void OnTriggerEnter(){
+		
 		int LTMin = LapTimeManager.MinuteCount;
 		int LTSec = LapTimeManager.SecondCount;
 		float LTMs = LapTimeManager.MilliCount;
+
+		LapsDone += 1;
+
+		PlayerPrefs.SetInt ("MinSave", LTMin);
+		PlayerPrefs.SetInt ("SecSave", LTSec);
+		PlayerPrefs.SetFloat ("MilliSave", LTMs);
 
 		LapTimeManager.MinuteCount = 0;
 		LapTimeManager.SecondCount = 0;
@@ -73,6 +83,7 @@ public class LapCompleteTrigger : MonoBehaviour {
 			MinuteBoxBest.GetComponent<Text> ().text = ""+ MinuteCountBest+":";
 		}
 
+		LapCount.GetComponent<Text> ().text = "" + LapsDone;
 		LapCompleteTrig.SetActive (false);
 		HalfLapTrig.SetActive (true);
 	}
