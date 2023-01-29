@@ -13,6 +13,9 @@ public class LapCompleteTrigger : MonoBehaviour {
 	public GameObject MilliBoxBest;
 	public GameObject LapCount;
 
+	public GameObject CarCam;
+	public GameObject FinishCam;
+
 	public int LapsDone;
 
 	public bool isBestTime;
@@ -24,6 +27,10 @@ public class LapCompleteTrigger : MonoBehaviour {
 		float LTMs = LapTimeManager.MilliCount;
 		float LTRaw = LapTimeManager.RawTime;
 		LapsDone += 1;
+		if (LapsDone == 2) {
+			CarCam.SetActive (false);
+			FinishCam.SetActive (true);
+		}
 		RawTime = PlayerPrefs.GetFloat ("RawTime",999999);
 		Debug.Log ("PrevLap RAW TIMEE : "+RawTime.ToString("F0"));
 
