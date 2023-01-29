@@ -10,6 +10,7 @@ public class RaceFinish : MonoBehaviour {
 	public GameObject FinishCam;
 	public GameObject LevelMusic;
 	public GameObject CompleteTrig;
+	public GameObject MiniMap;
 
 	void OnTriggerEnter(){
 		this.GetComponent<BoxCollider> ().enabled = false;
@@ -22,6 +23,7 @@ public class RaceFinish : MonoBehaviour {
 		FinishCam.SetActive (true);
 		LevelMusic.SetActive (false);
 		CarCam.SetActive (false);
+		MiniMap.SetActive (false);
 
 	}
 
