@@ -13,36 +13,60 @@ public class LapCompleteTrigger : MonoBehaviour {
 	public GameObject MilliBoxBest;
 	public GameObject LapCount;
 
-
-	public int MinuteCountBest;
-	public int SecondCountBest;
-	public float MilliCountBest;
-	public string MilliDisplayBest;
 	public int LapsDone;
 
 	public bool isBestTime;
-	void Start(){
-		MinuteCountBest= 9999;
-		SecondCountBest= 9999;
-		MilliCountBest= 9999;
-		Debug.Log (MinuteCountBest);
-	}
+
+	public float RawTime;
 	void OnTriggerEnter(){
-		
 		int LTMin = LapTimeManager.MinuteCount;
 		int LTSec = LapTimeManager.SecondCount;
 		float LTMs = LapTimeManager.MilliCount;
-
+		float LTRaw = LapTimeManager.RawTime;
 		LapsDone += 1;
+		RawTime = PlayerPrefs.GetFloat ("RawTime",999999);
+		Debug.Log ("PrevLap RAW TIMEE : "+RawTime.ToString("F0"));
 
-		PlayerPrefs.SetInt ("MinSave", LTMin);
-		PlayerPrefs.SetInt ("SecSave", LTSec);
-		PlayerPrefs.SetFloat ("MilliSave", LTMs);
+
+		if (LTRaw<RawTime) {
+			Debug.Log (LTRaw);
+			Debug.Log (RawTime);
+			MilliBoxBest.GetComponent<Text> ().text = ""+LTMs.ToString ("F0");
+			if (LTSec <= 9) {
+				SecondBoxBest.GetComponent<Text> ().text = "0" + LTSec + ".";
+			} else {
+				SecondBoxBest.GetComponent<Text> ().text = ""+ LTSec+".";
+			}
+
+			if (LTSec >= 60) {
+				LTSec = 0;
+				LTMin += 1;
+			}
+			if (LTMin <= 9) {
+				MinuteBoxBest.GetComponent<Text> ().text = "0" + LTMin + ":";
+			} else {
+				MinuteBoxBest.GetComponent<Text> ().text = ""+ LTMin+":";
+			}
+			PlayerPrefs.SetInt ("MinSave", LTMin);
+			PlayerPrefs.SetInt ("SecSave", LTSec);
+			PlayerPrefs.SetFloat ("MilliSave", LTMs);
+			PlayerPrefs.SetFloat ("RawTime", LTRaw);
+		}
+
+
 
 		LapTimeManager.MinuteCount = 0;
 		LapTimeManager.SecondCount = 0;
 		LapTimeManager.MilliCount = 0;
+		LapTimeManager.RawTime = 0;
 
+		LapCount.GetComponent<Text> ().text = "" + LapsDone;
+		LapCompleteTrig.SetActive (false);
+		HalfLapTrig.SetActive (true);
+	}
+}
+
+/*
 		isBestTime = false;
 		Debug.Log (LTMin);
 		Debug.Log (MinuteCountBest);
@@ -63,28 +87,4 @@ public class LapCompleteTrigger : MonoBehaviour {
 			MinuteCountBest = LTMin;
 			SecondCountBest = LTSec;
 			MilliCountBest = LTMs;
-		}
-
-		MilliDisplayBest = MilliCountBest.ToString ("F0");
-		MilliBoxBest.GetComponent<Text> ().text = ""+MilliDisplayBest;
-		if (SecondCountBest <= 9) {
-			SecondBoxBest.GetComponent<Text> ().text = "0" + SecondCountBest + ".";
-		} else {
-			SecondBoxBest.GetComponent<Text> ().text = ""+ SecondCountBest+".";
-		}
-
-		if (SecondCountBest >= 60) {
-			SecondCountBest = 0;
-			MinuteCountBest += 1;
-		}
-		if (MinuteCountBest <= 9) {
-			MinuteBoxBest.GetComponent<Text> ().text = "0" + MinuteCountBest + ":";
-		} else {
-			MinuteBoxBest.GetComponent<Text> ().text = ""+ MinuteCountBest+":";
-		}
-
-		LapCount.GetComponent<Text> ().text = "" + LapsDone;
-		LapCompleteTrig.SetActive (false);
-		HalfLapTrig.SetActive (true);
-	}
-}
+		}*/
