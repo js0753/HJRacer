@@ -13,23 +13,30 @@ public class LapCompleteTrigger : MonoBehaviour {
 	public GameObject MilliBoxBest;
 	public GameObject LapCount;
 
-	public GameObject CarCam;
-	public GameObject FinishCam;
+	public GameObject RaceFinish;
 
 	public int LapsDone;
 
 	public bool isBestTime;
 
 	public float RawTime;
+	/*
+	void Update(){
+		Debug.Log (LapsDone);
+		if (LapsDone == 2) {
+			RaceFinish.SetActive (true);
+		}
+	}*/
 	void OnTriggerEnter(){
+		LapsDone += 1;
+		LapCount.GetComponent<Text> ().text = "" + LapsDone;
 		int LTMin = LapTimeManager.MinuteCount;
 		int LTSec = LapTimeManager.SecondCount;
 		float LTMs = LapTimeManager.MilliCount;
 		float LTRaw = LapTimeManager.RawTime;
-		LapsDone += 1;
+
 		if (LapsDone == 2) {
-			CarCam.SetActive (false);
-			FinishCam.SetActive (true);
+		RaceFinish.SetActive (true);
 		}
 		RawTime = PlayerPrefs.GetFloat ("RawTime",999999);
 		Debug.Log ("PrevLap RAW TIMEE : "+RawTime.ToString("F0"));
@@ -67,9 +74,8 @@ public class LapCompleteTrigger : MonoBehaviour {
 		LapTimeManager.MilliCount = 0;
 		LapTimeManager.RawTime = 0;
 
-		LapCount.GetComponent<Text> ().text = "" + LapsDone;
-		LapCompleteTrig.SetActive (false);
 		HalfLapTrig.SetActive (true);
+		LapCompleteTrig.SetActive (false);
 	}
 }
 
