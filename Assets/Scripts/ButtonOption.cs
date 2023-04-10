@@ -5,11 +5,11 @@ using UnityEngine.SceneManagement; // UnityEngine.Application.LoadLevel not used
 
 public class ButtonOption : MonoBehaviour {
 
-	public void PlayButton(){
-		SceneManager.LoadScene (2);
-	}
+	//public void PlayButton(){
+	//	SceneManager.LoadScene (2);
+	//}
 
-	public void TrackSelect(){
+	public void PlayGame(){
 		SceneManager.LoadScene (1);
 	}
 
@@ -21,5 +21,9 @@ public class ButtonOption : MonoBehaviour {
 
 	public void Track01(){
 		SceneManager.LoadScene (2);
+	}
+
+	public void Track02(){
+		SceneManager.LoadScene (3);
 	}
 }
