@@ -35,7 +35,7 @@ public class LapCompleteTrigger : MonoBehaviour {
 		float LTMs = LapTimeManager.MilliCount;
 		float LTRaw = LapTimeManager.RawTime;
 
-		if (LapsDone == 2) {
+		if (ModeSelect.RaceMode == 0 && LapsDone == 2) {
 		RaceFinish.SetActive (true);
 		}
 		RawTime = PlayerPrefs.GetFloat ("RawTime",999999);
