@@ -2344,7 +2344,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &416342653
 Transform:
   m_ObjectHideFlags: 0
@@ -11656,7 +11656,7 @@ MonoBehaviour:
   ScoreText: {fileID: 1891111327}
   AICar: {fileID: 1831571652}
   InternalScore: 0
-  ScoreObjects: {fileID: 0}
+  ScoreObjects: {fileID: 1368979757}
 --- !u!4 &2047748773
 Transform:
   m_ObjectHideFlags: 0
