@@ -27,8 +27,11 @@ public class LapCompleteTrigger : MonoBehaviour {
 			RaceFinish.SetActive (true);
 		}
 	}*/
-	void OnTriggerEnter(){
+	void OnTriggerEnter(Collider other){
+		if (other.tag != "CarPos") {
+			Debug.Log (other.tag);
 		LapsDone += 1;
+		Debug.Log (LapsDone);
 		LapCount.GetComponent<Text> ().text = "" + LapsDone;
 		int LTMin = LapTimeManager.MinuteCount;
 		int LTSec = LapTimeManager.SecondCount;
@@ -40,11 +43,11 @@ public class LapCompleteTrigger : MonoBehaviour {
 		}
 		RawTime = PlayerPrefs.GetFloat ("RawTime",999999);
 		Debug.Log ("PrevLap RAW TIMEE : "+RawTime.ToString("F0"));
-		Debug.Log (RawTime);
-		Debug.Log (RawTime == 0);
+		//Debug.Log (RawTime);
+		//Debug.Log (RawTime == 0);
 		if (LTRaw<RawTime || (int)RawTime==0) {
-			Debug.Log (LTRaw);
-			Debug.Log (RawTime);
+			//Debug.Log (LTRaw);
+			//Debug.Log (RawTime);
 			MilliBoxBest.GetComponent<Text> ().text = ""+LTMs.ToString ("F0");
 			if (LTSec <= 9) {
 				SecondBoxBest.GetComponent<Text> ().text = "0" + LTSec + ".";
@@ -76,6 +79,7 @@ public class LapCompleteTrigger : MonoBehaviour {
 
 		HalfLapTrig.SetActive (true);
 		LapCompleteTrig.SetActive (false);
+	}
 	}
 }
 
