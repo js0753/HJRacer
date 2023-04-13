@@ -26,6 +26,7 @@ public class RaceFinish : MonoBehaviour {
 		MiniMap.SetActive (false);
 		GlobalCash.TotalCash += 100;
 		PlayerPrefs.SetInt ("SavedCash", GlobalCash.TotalCash);
+		PlayerPrefs.Save ();
 	}
 
 }
