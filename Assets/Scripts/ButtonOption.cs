@@ -10,24 +10,24 @@ public class ButtonOption : MonoBehaviour {
 	//}
 
 	public void PlayGame(){
-		SceneManager.LoadScene (1);
+		SceneManager.LoadScene (2);
 	}
 
 	public void MainMenu(){
-		SceneManager.LoadScene (0);
+		SceneManager.LoadScene (1);
 	}
 
 	//Below are Track Select Options
 
 	public void Track01(){
-		SceneManager.LoadScene (2);
-	}
-
-	public void Track02(){
 		SceneManager.LoadScene (3);
 	}
 
-	public void Credits(){
+	public void Track02(){
 		SceneManager.LoadScene (4);
+	}
+
+	public void Credits(){
+		SceneManager.LoadScene (5);
 	}
 }

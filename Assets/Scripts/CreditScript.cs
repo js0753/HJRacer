@@ -11,7 +11,7 @@ public class CreditScript : MonoBehaviour {
 
 	IEnumerator CreditFinish(){
 		yield return new WaitForSeconds (10);
-		SceneManager.LoadScene(0);
+		SceneManager.LoadScene(1);
 	}
 
 	/*
