@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.42297313, g: 0.5938097, b: 0.68746346, a: 1}
+  m_IndirectSpecularColor: {r: 0.43476143, g: 0.6097289, b: 0.7056479, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1128,7 +1128,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1649002252}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4148cbab3b34eae4e8016b3c5784f80d, type: 3}
+  m_Script: {fileID: 11500000, guid: d86f4cb493634324b9fe6491cdd37c2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   CashValue: 0
@@ -1268,7 +1268,7 @@ GameObject:
   - component: {fileID: 2010398924}
   - component: {fileID: 2010398923}
   m_Layer: 5
-  m_Name: Text
+  m_Name: CashDisp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

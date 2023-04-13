@@ -16,4 +16,8 @@ public class GlobalCar : MonoBehaviour {
 		CarType = 2;
 		ModeWindow.SetActive (true);
 	}
+	public void GreenCar(){
+		CarType = 3;
+		ModeWindow.SetActive (true);
+	}
 }

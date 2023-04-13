@@ -24,7 +24,8 @@ public class RaceFinish : MonoBehaviour {
 		LevelMusic.SetActive (false);
 		CarCam.SetActive (false);
 		MiniMap.SetActive (false);
-
+		GlobalCash.TotalCash += 100;
+		PlayerPrefs.SetInt ("SavedCash", GlobalCash.TotalCash);
 	}
 
 }

@@ -40,9 +40,9 @@ public class LapCompleteTrigger : MonoBehaviour {
 		}
 		RawTime = PlayerPrefs.GetFloat ("RawTime",999999);
 		Debug.Log ("PrevLap RAW TIMEE : "+RawTime.ToString("F0"));
-
-
-		if (LTRaw<RawTime) {
+		Debug.Log (RawTime);
+		Debug.Log (RawTime == 0);
+		if (LTRaw<RawTime || (int)RawTime==0) {
 			Debug.Log (LTRaw);
 			Debug.Log (RawTime);
 			MilliBoxBest.GetComponent<Text> ().text = ""+LTMs.ToString ("F0");

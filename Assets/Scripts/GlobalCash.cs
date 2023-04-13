@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class GlabalCash : MonoBehaviour {
+public class GlobalCash : MonoBehaviour {
 
 	public int CashValue;
 	public static int TotalCash;
 	public GameObject CashDisplay;
 	// Use this for initialization
 	void Start () {
-		
+		TotalCash = PlayerPrefs.GetInt ("SavedCash");
 	}
 	
 	// Update is called once per frame
