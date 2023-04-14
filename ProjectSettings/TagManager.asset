@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Dreamcar01
   - CarPos
+  - PlayerColliders
   layers:
   - Default
   - TransparentFX

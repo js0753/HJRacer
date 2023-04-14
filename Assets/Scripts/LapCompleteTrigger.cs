@@ -28,8 +28,8 @@ public class LapCompleteTrigger : MonoBehaviour {
 		}
 	}*/
 	void OnTriggerEnter(Collider other){
-		if (other.tag != "CarPos") {
-			Debug.Log (other.tag);
+		Debug.Log (other.tag);
+		if (other.tag == "PlayerColliders" || other.tag=="Dreamcar01") {
 		LapsDone += 1;
 		Debug.Log (LapsDone);
 		LapCount.GetComponent<Text> ().text = "" + LapsDone;
