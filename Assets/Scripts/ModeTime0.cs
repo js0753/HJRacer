@@ -44,7 +44,7 @@ public class ModeTime0 : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		countdown += Time.deltaTime;
-		Debug.Log (ModeSelection);
+		//Debug.Log (ModeSelection);
 		if (countdown>=3 && ModeSelection == 2) {
 			TimeRemaining -= Time.deltaTime * 10;
 
