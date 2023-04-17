@@ -13,20 +13,27 @@ public class RaceFinish : MonoBehaviour {
 	public GameObject MiniMap;
 
 	void OnTriggerEnter(){
-		this.GetComponent<BoxCollider> ().enabled = false;
-		MyCar.SetActive (false); // Why ?
-		CompleteTrig.SetActive(false);
-		CarController.m_Topspeed = 0.0f;
-		MyCar.GetComponent<CarController> ().enabled = false;
-		MyCar.GetComponent<CarUserControl> ().enabled = false;
-		MyCar.SetActive (true);
-		FinishCam.SetActive (true);
-		LevelMusic.SetActive (false);
-		CarCam.SetActive (false);
-		MiniMap.SetActive (false);
-		GlobalCash.TotalCash += 100;
-		PlayerPrefs.SetInt ("SavedCash", GlobalCash.TotalCash);
-		PlayerPrefs.Save ();
+        if (ModeTime.isTimeMode == true)
+        {
+            // in race Time mode
+        }
+        else {
+            this.GetComponent<BoxCollider>().enabled = false;
+            MyCar.SetActive(false); // Why ?
+            CompleteTrig.SetActive(false);
+            CarController.m_Topspeed = 0.0f;
+            MyCar.GetComponent<CarController>().enabled = false;
+            MyCar.GetComponent<CarUserControl>().enabled = false;
+            MyCar.SetActive(true);
+            FinishCam.SetActive(true);
+            LevelMusic.SetActive(false);
+            CarCam.SetActive(false);
+            MiniMap.SetActive(false);
+            GlobalCash.TotalCash += 100;
+            PlayerPrefs.SetInt("SavedCash", GlobalCash.TotalCash);
+            PlayerPrefs.Save();
+        }
+		
 	}
 
 }

@@ -6,13 +6,13 @@ using UnityEngine.UI;
 public class ModeTime : MonoBehaviour {
 
 	public int ModeSelection;
-	public GameObject RaceModeUI;
 	public GameObject AICar;
+    public static bool isTimeMode = false;
 	// Use this for initialization
 	void Start () {
 		ModeSelection = ModeSelect.RaceMode;
-		if (ModeSelection == 1) {
-			RaceModeUI.SetActive (false);
+		if (ModeSelection == 2) {
+            isTimeMode = true;
 			AICar.SetActive (false);
 		}
 	}
